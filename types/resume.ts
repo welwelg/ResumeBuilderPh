@@ -9,6 +9,7 @@ export interface PersonalInfo {
 }
 
 export interface Education {
+  id: string;
   school: string;
   degree: string;
   year: string;
@@ -21,9 +22,17 @@ export interface Experience {
   description: string;
 }
 
+export interface Certificate {
+  id: string;
+  name: string;
+  issuer: string;
+  date: string;
+}
+
 export interface ResumeData {
   personalInfo: PersonalInfo;
   education: Education[];
   experience: Experience[];
   skills: string[];
+  certificates: Certificate[];
 }

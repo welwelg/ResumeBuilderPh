@@ -1,6 +1,6 @@
-// app/page.tsx
 import { Card } from "@/components/ui/card";
-import { PersonalInfoForm } from "@/components/ui/editor/PersonalInfoForm";
+import { PersonalInfoForm } from "@/components/editor/PersonalInfoForm";
+import { ResumePreview } from "@/components/preview/ResumePreview";
 
 export default function Home() {
   return (
@@ -16,21 +16,24 @@ export default function Home() {
       </header>
 
       {/* Main Workspace - Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 flex-1 overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-1 overflow-hidden">
         {/* LEFT: Editor Section */}
-        <Card className="p-6 overflow-y-auto bg-white shadow-sm border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Editor</h2>
+        <Card className="p-6 overflow-y-auto bg-white shadow-sm border-slate-200 h-full">
+          <h2 className="text-xl font-semibold mb-6">Editor</h2>
+
           <PersonalInfoForm />
+
+          <hr className="my-6 border-slate-200" />
         </Card>
 
         {/* RIGHT: Live Preview Section */}
-        <Card className="p-6 overflow-y-auto bg-white shadow-2xl border-slate-200 flex justify-center">
-          <div className="w-[210mm] min-h-[297mm] bg-white shadow-md border p-10 scale-90 origin-top">
-            {/* This simulates A4 Paper size */}
-            <h1 className="text-4xl font-bold">Juan Dela Cruz</h1>
-            <p className="text-slate-600">Software Engineer</p>
-            <hr className="my-4" />
-            <p>Waiting for data...</p>
+        <Card className="p-6 bg-slate-100 shadow-inner border-slate-200 flex flex-col items-center overflow-y-auto h-full relative">
+          <h2 className="text-xl font-semibold mb-4 text-slate-500 w-full text-center">
+            Live Preview
+          </h2>
+          {/* Scale Logic */}
+          <div className="transform scale-[0.5] sm:scale-[0.6] md:scale-[0.65] lg:scale-[0.80] origin-top transition-all">
+            <ResumePreview />
           </div>
         </Card>
       </div>
