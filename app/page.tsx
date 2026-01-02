@@ -1,6 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { PersonalInfoForm } from "@/components/editor/PersonalInfoForm";
 import { ResumePreview } from "@/components/preview/ResumePreview";
+import { SkillsForm } from "@/components/editor/SkillsForm";
+import { ExperienceForm } from "@/components/editor/ExperienceForm";
 
 export default function Home() {
   return (
@@ -20,10 +22,11 @@ export default function Home() {
         {/* LEFT: Editor Section */}
         <Card className="p-6 overflow-y-auto bg-white shadow-sm border-slate-200 h-full">
           <h2 className="text-xl font-semibold mb-6">Editor</h2>
-
           <PersonalInfoForm />
-
           <hr className="my-6 border-slate-200" />
+          <SkillsForm />
+          <hr className="my-6 border-slate-200" />
+          <ExperienceForm />
         </Card>
 
         {/* RIGHT: Live Preview Section */}

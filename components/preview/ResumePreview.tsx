@@ -5,6 +5,7 @@ import { useResumeStore } from "@/lib/store";
 export const ResumePreview = () => {
   const personalInfo = useResumeStore((state) => state.resumeData.personalInfo);
   const skills = useResumeStore((state) => state.resumeData.skills);
+  const experience = useResumeStore((state) => state.resumeData.experience);
 
   const initials = personalInfo.fullName
     ? personalInfo.fullName
@@ -79,6 +80,41 @@ export const ResumePreview = () => {
               >
                 {skill.trim()}
               </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* --- Work Experience Section --- */}
+      {experience && experience.length > 0 && (
+        <div className="mb-8">
+          <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4 border-b border-slate-200 pb-1">
+            Work Experience
+          </h3>
+
+          <div className="space-y-6">
+            {experience.map((job) => (
+              <div key={job.id}>
+                {/* Row1 Job Title (left) - Date (right) */}
+                <div className="flex justify-between items-baseline mb-1">
+                  <h4 className="font-bold text-slate-900 text-lg">
+                    {job.role || "Job Title"}
+                  </h4>
+                  <span className="text-sm text-slate-500 font-medium italic">
+                    {job.duration || "Date Period"}
+                  </span>
+                </div>
+
+                {/* Row2 Company Name*/}
+                <div className="text-slate-700 font-medium mb-2">
+                  {job.company || "Company Name"}
+                </div>
+
+                {/* Row3 Job Description */}
+                <div className="text-slate-600 text-sm leading-relaxed whitespace-pre-wrap">
+                  {job.description || "Description of your achievements..."}
+                </div>
+              </div>
             ))}
           </div>
         </div>
