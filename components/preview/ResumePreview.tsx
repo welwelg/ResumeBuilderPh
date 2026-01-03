@@ -1,11 +1,14 @@
 "use client";
 
 import { useResumeStore } from "@/lib/store";
+import React, { forwardRef } from "react";
 
-export const ResumePreview = () => {
+export const ResumePreview = forwardRef<HTMLDivElement>((props, ref) => {
   const personalInfo = useResumeStore((state) => state.resumeData.personalInfo);
   const skills = useResumeStore((state) => state.resumeData.skills);
   const experience = useResumeStore((state) => state.resumeData.experience);
+  const education = useResumeStore((state) => state.resumeData.education);
+  const certificates = useResumeStore((state) => state.resumeData.certificates);
 
   const initials = personalInfo.fullName
     ? personalInfo.fullName
@@ -17,7 +20,11 @@ export const ResumePreview = () => {
     : "ME";
 
   return (
-    <div className="w-[210mm] min-h-[297mm] bg-white text-slate-900 font-sans text-left p-10 shadow-lg">
+    <div
+      ref={ref}
+      {...props}
+      className="w-[210mm] min-h-[297mm] bg-white text-slate-900 font-sans text-left p-10 shadow-lg"
+    >
       {/* --- HEADER SECTION --- */}
       <div className="border-b-2 border-slate-900 pb-6 mb-6">
         <div className="flex justify-between items-end">
@@ -26,7 +33,7 @@ export const ResumePreview = () => {
               {personalInfo.fullName || "Full Name"}
             </h1>
             <p className="text-lg text-slate-600 font-medium mt-1">
-              Software Engineer
+              {personalInfo.jobTitle || "Job Title"}
             </p>
           </div>
           <div className="h-16 w-16 bg-slate-900 text-white flex items-center justify-center text-2xl font-bold rounded-full">
@@ -34,20 +41,64 @@ export const ResumePreview = () => {
           </div>
         </div>
 
-        <div className="flex gap-6 mt-4 text-sm text-slate-600 flex-wrap">
+        <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4 text-sm text-slate-600">
+          {/* Email */}
           {personalInfo.email && (
-            <div className="flex items-center gap-1">
-              <span>📧</span> {personalInfo.email}
+            <div className="flex items-center gap-1.5">
+              <span className="text-slate-400">📧</span> {personalInfo.email}
             </div>
           )}
+
+          {/* Phone */}
           {personalInfo.phone && (
-            <div className="flex items-center gap-1">
-              <span>📱</span> {personalInfo.phone}
+            <div className="flex items-center gap-1.5">
+              <span className="text-slate-400">📱</span> {personalInfo.phone}
             </div>
           )}
+
+          {/* Address */}
           {personalInfo.address && (
-            <div className="flex items-center gap-1">
-              <span>📍</span> {personalInfo.address}
+            <div className="flex items-center gap-1.5">
+              <span className="text-slate-400">📍</span> {personalInfo.address}
+            </div>
+          )}
+
+          {/* Divider (Optional: Visual separation kung gusto mo) */}
+          {(personalInfo.linkedin || personalInfo.github) && (
+            <span className="hidden sm:inline text-slate-300">|</span>
+          )}
+
+          {/* LinkedIn */}
+          {personalInfo.linkedin && (
+            <div className="flex items-center gap-1.5">
+              <span className="font-bold text-blue-700 bg-blue-50 px-1 rounded text-xs">
+                in
+              </span>
+              <span className="hover:underline cursor-pointer">
+                {personalInfo.linkedin.replace(/^https?:\/\/(www\.)?/, "")}
+              </span>
+            </div>
+          )}
+
+          {/* GitHub */}
+          {personalInfo.github && (
+            <div className="flex items-center gap-1.5">
+              <span className="font-bold text-slate-900 bg-slate-100 px-1 rounded text-xs">
+                GH
+              </span>
+              <span className="hover:underline cursor-pointer">
+                {personalInfo.github.replace(/^https?:\/\/(www\.)?/, "")}
+              </span>
+            </div>
+          )}
+
+          {/* Portfolio */}
+          {personalInfo.portfolio && (
+            <div className="flex items-center gap-1.5">
+              <span className="text-slate-400">🌐</span>
+              <span className="hover:underline cursor-pointer">
+                {personalInfo.portfolio.replace(/^https?:\/\/(www\.)?/, "")}
+              </span>
             </div>
           )}
         </div>
@@ -120,15 +171,62 @@ export const ResumePreview = () => {
         </div>
       )}
 
+      {/* --- Education Section --- */}
+      {education && education.length > 0 && (
+        <div className="mb-8">
+          <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4 border-b border-slate-200 pb-1">
+            Education
+          </h3>
+
+          <div className="space-y-4">
+            {education.map((edu) => (
+              <div key={edu.id}>
+                {/* School Name & Date Split */}
+                <div className="flex justify-between items-baseline mb-1">
+                  <h4 className="font-bold text-slate-900 text-base">
+                    {edu.school || "University Name"}
+                  </h4>
+                  <span className="text-sm text-slate-500 font-medium italic">
+                    {edu.year || "Year"}
+                  </span>
+                </div>
+
+                {/* Degree */}
+                <div className="text-slate-700 text-sm">
+                  {edu.degree || "Degree / Course"}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* --- CERTIFICATES PLACEHOLDER --- */}
-      <div className="mb-8 opacity-50">
-        <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-200 pb-1">
-          Certificates
-        </h3>
-        <p className="text-sm text-slate-400 italic">
-          (Certificates will appear here later...)
-        </p>
-      </div>
+      {certificates && certificates.length > 0 && (
+        <div className="mb-8">
+          <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4 border-b border-slate-200 pb-1">
+            Certificates
+          </h3>
+
+          <div className="space-y-4">
+            {certificates.map((cert) => (
+              <div key={cert.id}>
+                {/* Certificate Name & Issuer Split */}
+                <div className="flex justify-between items-baseline mb-1">
+                  <h4 className="font-bold text-slate-900 text-base">
+                    {cert.name || "Certificate Name"}
+                  </h4>
+                  <span className="text-sm text-slate-500 font-medium italic">
+                    {cert.issuer || "Issuing Organization"}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
-};
+});
+
+ResumePreview.displayName = "ResumePreview";

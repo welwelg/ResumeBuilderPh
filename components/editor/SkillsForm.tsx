@@ -21,9 +21,12 @@ export const SkillsForm = () => {
       <h3 className="text-lg font-medium text-slate-900">Technical Skills</h3>
 
       <div className="space-y-2">
-        <Label htmlFor="skills">List your skills (Separate with commas)</Label>
+        <Label htmlFor="skills">
+          List your skills Frontend, Backend, Database, Tools (Separate with
+          commas)
+        </Label>
         <p className="text-xs text-slate-500">
-          Example: ReactJS, TypeScript, Tailwind CSS, Figma, Node.js
+          Example: ReactJS, Node.js, MongoDB, Figma
         </p>
 
         <textarea

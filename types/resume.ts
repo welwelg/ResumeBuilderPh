@@ -6,6 +6,10 @@ export interface PersonalInfo {
   phone: string;
   address: string;
   summary: string;
+  linkedin?: string;
+  github?: string;
+  portfolio?: string;
+  jobTitle?: string;
 }
 
 export interface Education {
@@ -27,7 +31,6 @@ export interface Certificate {
   id: string;
   name: string;
   issuer: string;
-  date: string;
 }
 
 export interface ResumeData {

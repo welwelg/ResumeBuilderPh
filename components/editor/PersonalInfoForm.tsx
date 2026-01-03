@@ -26,6 +26,18 @@ export const PersonalInfoForm = () => {
         />
       </div>
 
+      {/* Job Title */}
+      <div className="space-y-2">
+        <Label htmlFor="jobTitle">Job Title</Label>
+        <Input
+          id="jobTitle"
+          placeholder="e.g. Senior Frontend Developer"
+          value={personalInfo.jobTitle || ""}
+          onChange={(e) => updatePersonalInfo("jobTitle", e.target.value)}
+          className="text-slate-900 bg-white"
+        />
+      </div>
+
       {/* Email */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
@@ -63,6 +75,45 @@ export const PersonalInfoForm = () => {
           onChange={(e) => updatePersonalInfo("address", e.target.value)}
           className="text-slate-900"
         />
+      </div>
+
+      {/* SOCIALS */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* LinkedIn */}
+        <div className="space-y-2">
+          <Label htmlFor="linkedin">LinkedIn (URL)</Label>
+          <Input
+            id="linkedin"
+            placeholder="linkedin.com/in/juan"
+            value={personalInfo.linkedin || ""}
+            onChange={(e) => updatePersonalInfo("linkedin", e.target.value)}
+            className="text-slate-900 bg-white text-xs"
+          />
+        </div>
+
+        {/* GitHub */}
+        <div className="space-y-2">
+          <Label htmlFor="github">GitHub (URL)</Label>
+          <Input
+            id="github"
+            placeholder="github.com/juan"
+            value={personalInfo.github || ""}
+            onChange={(e) => updatePersonalInfo("github", e.target.value)}
+            className="text-slate-900 bg-white text-xs"
+          />
+        </div>
+
+        {/* Portfolio */}
+        <div className="space-y-2">
+          <Label htmlFor="portfolio">Portfolio (URL)</Label>
+          <Input
+            id="portfolio"
+            placeholder="juandelacruz.com"
+            value={personalInfo.portfolio || ""}
+            onChange={(e) => updatePersonalInfo("portfolio", e.target.value)}
+            className="text-slate-900 bg-white text-xs"
+          />
+        </div>
       </div>
 
       {/* Summary */}
