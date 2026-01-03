@@ -23,7 +23,19 @@ export const ResumePreview = forwardRef<HTMLDivElement>((props, ref) => {
     <div
       ref={ref}
       {...props}
-      className="w-[210mm] min-h-[297mm] bg-white text-slate-900 font-sans text-left p-10 shadow-lg"
+      className="
+    w-[210mm] min-h-[297mm] bg-white text-slate-900 font-sans text-left shadow-lg
+    
+    /* PADDING SETUP */
+    p-10              /* Padding sa Screen */
+    print:p-10!      /* Padding sa Print (IMPORTANT: Wag gawing p-0) */
+    
+    /* PRINT RESET */
+    print:shadow-none 
+    print:w-auto 
+    print:h-auto 
+    print:overflow-visible
+  "
     >
       {/* --- HEADER SECTION --- */}
       <div className="border-b-2 border-slate-900 pb-6 mb-6">
@@ -127,7 +139,13 @@ export const ResumePreview = forwardRef<HTMLDivElement>((props, ref) => {
             {skills.map((skill, index) => (
               <span
                 key={index}
-                className="bg-slate-100 text-slate-800 px-3 py-1 rounded-md text-sm font-medium border border-slate-300 shadow-sm"
+                className="bg-slate-100 text-slate-800 px-3 py-1 rounded-md text-sm font-medium border border-slate-300 shadow-sm
+                print:bg-transparent!
+                print:border-none!
+                print:shadow-none!
+                print:p-0!
+              print:text-black!
+                print:mr-2"
               >
                 {skill.trim()}
               </span>

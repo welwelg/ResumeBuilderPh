@@ -15,16 +15,19 @@ export default function Home() {
   const componentRef = useRef<HTMLDivElement>(null);
   const handlePrint = useReactToPrint({
     contentRef: componentRef,
-    documentTitle: "My_Resume_Builder_PH",
+    documentTitle: "Rogelio_Gallardo_Resume",
 
     pageStyle: `
       @page {
-        size: auto;
-        margin: 0mm;
+       size: A4 portrait; 
+        margin: 0;         
       }
       @media print {
         body {
           -webkit-print-color-adjust: exact;
+        }
+          html, body {
+          height: 100%; 
         }
       }
     `,
@@ -82,6 +85,20 @@ export default function Home() {
           </div>
         </Card>
       </div>
+
+      <footer className="mt-6 text-center shrink-0">
+        <p className="text-sm text-slate-400 flex items-center justify-center gap-1">
+          Built with <span className="text-red-500 animate-pulse">❤️</span> by
+          <a
+            href="https://gallardoportfolio.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-slate-600 hover:text-blue-600 transition-colors underline decoration-dotted hover:decoration-solid underline-offset-4"
+          >
+            WelTechCode
+          </a>
+        </p>
+      </footer>
     </main>
   );
 }
