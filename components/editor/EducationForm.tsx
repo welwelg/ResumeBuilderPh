@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useResumeActions, useResumeData } from "@/lib/store";
-import { PlusCircle, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 
 export const EducationForm = () => {
   const { education } = useResumeData();
@@ -20,7 +20,7 @@ export const EducationForm = () => {
           size="sm"
           className="gap-2 text-blue-600 border-blue-200 hover:bg-blue-50"
         >
-          <PlusCircle className="w-4 h-4" /> Add School
+          Add School
         </Button>
       </div>
 

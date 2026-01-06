@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useResumeActions, useResumeData } from "@/lib/store";
-import { PlusCircle, Trash2 } from "lucide-react"; // Icons
+import { Trash2 } from "lucide-react"; // Icons
 
 export const ExperienceForm = () => {
   // 1. GET DATA
@@ -25,7 +25,7 @@ export const ExperienceForm = () => {
           size="sm"
           className="gap-2 text-blue-600 border-blue-200 hover:bg-blue-50"
         >
-          <PlusCircle className="w-4 h-4" /> Add Job
+          Add Job
         </Button>
       </div>
 
@@ -107,7 +107,7 @@ export const ExperienceForm = () => {
           <div className="text-center p-8 text-slate-400 bg-slate-50 rounded-lg border border-dashed border-slate-300">
             <p>No experience listed yet.</p>
             <p className="text-xs mt-1">
-              Click `+ Add Job` to start highlighting your career.
+              Click `Add Job` to start highlighting your career.
             </p>
           </div>
         )}
