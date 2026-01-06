@@ -41,7 +41,7 @@ export const ResumePreview = forwardRef<HTMLDivElement>((props, ref) => {
       <div className="border-b-2 border-slate-900 pb-6 mb-6">
         <div className="flex justify-between items-end">
           <div>
-            <h1 className="text-4xl font-extrabold uppercase tracking-wide text-slate-900">
+            <h1 className="text-2xl font-extrabold uppercase tracking-wide text-slate-900">
               {personalInfo.fullName || "Full Name"}
             </h1>
             <p className="text-lg text-slate-600 font-medium mt-1">
