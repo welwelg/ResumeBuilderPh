@@ -88,7 +88,7 @@ export default function Home() {
 
       <footer className="mt-6 text-center shrink-0">
         <p className="text-sm text-slate-400 flex items-center justify-center gap-1">
-          Built with <span className="text-red-500 animate-pulse">❤️</span> by
+          Built with <span className="text-red-500 animate-pulse"></span> by
           <a
             href="https://gallardoportfolio.vercel.app/"
             target="_blank"

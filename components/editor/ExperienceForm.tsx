@@ -36,7 +36,6 @@ export const ExperienceForm = () => {
             key={job.id}
             className="p-4 border border-slate-200 rounded-lg bg-slate-50 relative group transition-all hover:shadow-md"
           >
-            {/* REMOVE BUTTON (Nasa Top Right) */}
             <button
               onClick={() => removeExperience(job.id)}
               className="absolute top-2 right-2 text-slate-400 hover:text-red-500 transition-colors p-1"
@@ -45,7 +44,7 @@ export const ExperienceForm = () => {
               <Trash2 className="w-4 h-4" />
             </button>
 
-            {/* ROW 1: Job Title & Company */}
+            {/* ROW 1 Job Title & Company */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
               <div className="space-y-1.5">
                 <Label className="text-xs text-slate-500">Job Title</Label>
@@ -72,7 +71,7 @@ export const ExperienceForm = () => {
               </div>
             </div>
 
-            {/* ROW 2: Duration */}
+            {/* ROW 2 Duration */}
             <div className="space-y-1.5 mb-3">
               <Label className="text-xs text-slate-500">Date / Duration</Label>
               <Input
@@ -85,7 +84,7 @@ export const ExperienceForm = () => {
               />
             </div>
 
-            {/* ROW 3: Description */}
+            {/* ROW 3 Description */}
             <div className="space-y-1.5">
               <Label className="text-xs text-slate-500">
                 Description / Achievements
